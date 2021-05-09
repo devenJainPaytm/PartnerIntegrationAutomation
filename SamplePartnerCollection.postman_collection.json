@@ -1,0 +1,1847 @@
+{
+	"info": {
+		"_postman_id": "e79cb4e0-999e-401a-8bc8-e62d67c57031",
+		"name": "SamplePartnerCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CreateQuote",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e99ff64d-474f-4e08-9684-e33dacc9d653",
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    var result = pm.response;",
+							"    result.to.have.status(200);",
+							"    pm.expect(result).to.not.equal(null)",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"quoteId\", jsonData.quoteId);",
+							"",
+							"",
+							"const schema ={",
+							" \"type\":\"object\",",
+							" \"properties\":{",
+							"        \"quoteId\":{",
+							"             \"type\":\"string\"",
+							"             },",
+							"             \"customerQuote\":{",
+							"                 \"type\":\"object\",",
+							"                 \"properties\":{",
+							"                    \"id\":{\"type\":\"number\"},",
+							"                    \"hasPACovered\":{\"type\":\"boolean\"},",
+							"                    \"isOwnerDriver\":{\"type\":\"boolean\"},",
+							"                    \"addonPaidDriver\":{\"type\":\"boolean\"},",
+							"                    \"parentQuoteId\":{\"type\":[\"string\",\"null\"]},",
+							"                    \"idv\":{\"type\":[\"number\",\"null\"]},",
+							"                    \"idvElectrical\":{\"type\":[\"number\",\"null\"]},",
+							"                    \"idvNonElectrical\":{\"type\":[\"number\",\"null\"]},",
+							"                    \"isCngFitted\":{\"type\":\"boolean\"},",
+							"                    \"cngKitValue\":{\"type\":\"number\"},",
+							"                    \"ownership\":{\"type\":\"string\"},",
+							"                    \"commercialType\":{\"type\":\"string\"},",
+							"                    \"vehicleId\":{\"type\":\"number\"},",
+							"                    \"rtoId\":{\"type\":\"number\"},",
+							"                    \"registrationDate\":{\"type\":\"string\"},",
+							"                    \"manufacturingDate\":{\"type\":\"string\"},",
+							"                    \"registrationNumber\":{\"type\":[\"string\",\"null\"]},",
+							"                    \"vehicleType\":{\"type\":\"string\"},",
+							"                    \"policyType\":{\"type\":\"string\"},",
+							"                    \"isClaimedLastYear\": {\"type\":\"boolean\"},",
+							"                    \"isPastPolicyDetailsAvl\": {\"type\":\"boolean\"},",
+							"                    \"newPolicyStartDate\": {\"type\":\"string\"},",
+							"                    \"odPastPolicyExpiryDate\": {\"type\":\"string\"},",
+							"                    \"previousNCB\": {\"type\":\"number\"},",
+							"                    \"tpPastPolicyExpiryDate\": {\"type\":\"string\"},",
+							"                    \"quoteId\": {\"type\":\"string\"},",
+							"                    \"addon247RoadsideAssistance\":{",
+							"                        \"type\":\"boolean\"},",
+							"                    \"addonConsumables\":{\"type\":\"boolean\"},",
+							"                    \"addonEngineProtector\":{\"type\":\"boolean\"},",
+							"                    \"addonInvoiceCover\":{\"type\":\"boolean\"},",
+							"                    \"addonKeyReplacement\":{\"type\":\"boolean\"},",
+							"                    \"addonNcbProtection\":{\"type\":\"boolean\"},",
+							"                    \"addonZeroDepreciation\":{\"type\":\"boolean\"},",
+							"                    \"addonEmergencyTransportAndHotelExpenses\":{\"type\":\"boolean\"},",
+							"                    \"addonRepairOfGlassFiberPlasticRubberParts\": {\"type\":\"boolean\"},",
+							"                    \"addonPaOwnerDriver\": {\"type\":\"boolean\"},",
+							"                    \"addonTyreSecure\": {\"type\":\"boolean\"},",
+							"                    \"addonLossOfPersonalBelongings\":{\"type\":\"boolean\"},",
+							"                    \"paPassengerCover\": {\"type\":\"number\"},",
+							"                    \"paPassengerCount\": {\"type\":\"number\"},",
+							"                    \"discountThirdPartyPartial\":{\"type\":\"boolean\"},",
+							"                    \"discountVoluntaryDeductible\":{\"type\":\"number\"},",
+							"                    \"discountAntiTheftDevice\": {\"type\":\"boolean\"},",
+							"                    \"discountAutomobileAssociationMembership\": {\"type\":\"boolean\"},",
+							"                    \"lastYearZeroDepTaken\":{\"type\":\"boolean\"},",
+							"                    \"previousCoverageType\":{\"type\":\"string\"},",
+							"                    \"previousInsurerId\":{\"type\":[\"number\",\"null\"]},",
+							"                    \"uiParams\":{\"type\":[\"string\",\"null\"]},",
+							"                    \"ownedBy\":{\"type\":\"string\"},",
+							"                    \"coverageGroup\":{\"type\":\"string\"},",
+							"                    },",
+							"              \"required\":[\"id\",\"hasPACovered\",\"isOwnerDriver\",\"addonPaidDriver\",\"parentQuoteId\",\"idv\",\"idvElectrical\",\"idvNonElectrical\",\"isCngFitted\",\"cngKitValue\",\"ownership\",\"commercialType\",\"vehicleId\",\"rtoId\",\"registrationDate\",\"manufacturingDate\",\"registrationNumber\",\"vehicleType\",\"policyType\",\"addon247RoadsideAssistance\",\"addonConsumables\",\"addonEngineProtector\",\"addonInvoiceCover\",\"addonKeyReplacement\",\"addonNcbProtection\",\"addonZeroDepreciation\",\"isClaimedLastYear\",\"isPastPolicyDetailsAvl\",\"newPolicyStartDate\",\"odPastPolicyExpiryDate\",\"previousNCB\",\"tpPastPolicyExpiryDate\",\"quoteId\",\"addonEmergencyTransportAndHotelExpenses\",\"addonRepairOfGlassFiberPlasticRubberParts\",\"addonPaOwnerDriver\",\"addonTyreSecure\",\"addonLossOfPersonalBelongings\",\"paPassengerCover\",\"paPassengerCount\",\"discountThirdPartyPartial\",\"discountVoluntaryDeductible\",\"discountAntiTheftDevice\",\"discountAutomobileAssociationMembership\",\"lastYearZeroDepTaken\",\"previousCoverageType\",\"previousInsurerId\",\"uiParams\",\"ownedBy\",\"coverageGroup\"],",
+							"           \"additionalProperties\":false",
+							"",
+							"        },",
+							"        \"continuePolling\":{\"type\":\"boolean\"},",
+							"        \"listPremiumInfo\":{\"type\":\"array\"},",
+							"},",
+							"  \"required\":[\"quoteId\",\"customerQuote\",\"continuePolling\",\"listPremiumInfo\"],",
+							"  \"additionalProperties\":false",
+							"",
+							"};",
+							"",
+							"pm.test(\"Test JSON Schema of Main Response\",function(){",
+							"   //pm.response.to.have.jsonSchema(schema);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ca8ebec4-0427-47a6-b8dc-2fb7236627f2",
+						"exec": [
+							"",
+							"var postmanObject = pm;",
+							"_.setInitialConfigValue(postmanObject);",
+							"_.setCoverageGroup();",
+							"_.setExpiryDate();",
+							"_.setRegistrationDate();",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-GB,en;q=0.5",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CUSTOMER-ID",
+						"value": "1001287547",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CLIENT",
+						"value": "web",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-APP-VERSION",
+						"value": "null",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "https://staging.paytminsurance.co.in",
+						"type": "text"
+					},
+					{
+						"key": "DNT",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://staging.paytminsurance.co.in/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"quoteParams\": {{quoteDto}},\n    \"insurerConfigIds\":null\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/{{quoteUrl}}/createQuote",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{quoteUrl}}",
+						"createQuote"
+					]
+				},
+				"description": "This is POST request.\nWill return quotes created on the basis of provided values.\nRequestBody:-\n{\n  \"quoteParams\":{\n            \"policyType\": \"renew\",\n            \"vehicleType\": \"four_wheeler\",\n            \"ownership\":\"private\",\n            \"rtoId\": 11,\n            \"vehicleId\": 2497,\n            \"isCNGFitted\": false,\n            \"idv\": 851705,\n            \"idvElectrical\": 8179,\n            \"idvNonElectrical\": 1691,\n            \"newPolicyStartDate\": \"31-08-2020\",\n            \"isClaimedLastYear\": false,\n            \"previousNCB\": 35,\n            \"odPastPolicyExpiryDate\": \"30-10-2020\",\n            \"tpPastPolicyExpiryDate\": \"30-08-2020\",\n            \"registrationDate\": \"12-12-2018\",\n            \"isPastPolicyDetailsAvl\": true,\n            \"cngKitValue\": 13070,\n            \"registrationNumber\": \"DL-01-XX-0001\",\n            \"addonZeroDepreciation\": false,\n            \"addonInvoiceCover\": true,\n            \"addon247RoadsideAssistance\": true,\n            \"addonEngineProtector\": true,\n            \"addonNcbProtection\": true,\n            \"addonKeyReplacement\": true,\n            \"addonConsumables\": false,\n            \"policySubType\": \"fdf\",\n            \"isPaSelected\" : true,\n            \"manufacturingDate\": \"30-08-2020\"\n        },\n  \"fetchedPlans\": [\n    \"string\"\n  ]\n}"
+			},
+			"response": []
+		},
+		{
+			"name": "FetchPremium",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c812cf8a-3f77-4efd-a76f-0d91c97023e0",
+						"exec": [
+							"var postmanObject = pm;\r",
+							"_.setInitialConfigValue(postmanObject);\r",
+							"const maxNumberOfTries = 4; \r",
+							"const wait = 20; \r",
+							"const response = pm.response.json();\r",
+							"var inputIDV = _.getInputIdv();\r",
+							"var testPartner = _.getPartnerName();\r",
+							"var isBundledPartner = JSON.parse(_.getIsBundledPartner().toLowerCase());\r",
+							"var coverageType = _.getCoverageType().toLowerCase();\r",
+							"var testPremiumObject; \r",
+							"var newPartnerResponse=null;\r",
+							"\r",
+							"\r",
+							"if (!_.getRetryCount()) {\r",
+							"    _.setRetryCount(1);\r",
+							"}\r",
+							"if (_.getRetryCount() <= maxNumberOfTries && !_isPartnerAvailable()) {\r",
+							"     \r",
+							"     const tries = parseInt(_.getRetryCount())+1;\r",
+							"     _.setRetryCount(tries);\r",
+							"     setTimeout(function() {}, wait);\r",
+							"     postman.setNextRequest(request.name);\r",
+							" } else {\r",
+							"     _.unsetRetryCount();\r",
+							"     testPartnerResponse();\r",
+							"}\r",
+							"\r",
+							"\r",
+							"function _isPartnerAvailable(){\r",
+							"   return response.listPremiumInfo.some(item=>{\r",
+							"       if(item.successData!=null){\r",
+							"           if(item.successData.premiumResponse.insurer.includes(testPartner)){\r",
+							"                newPartnerResponse= item;\r",
+							"                return true;\r",
+							"       }\r",
+							"       }else{\r",
+							"           if(item.failureData.errorCode.includes(testPartner)){\r",
+							"                newPartnerResponse= item;\r",
+							"                return true;\r",
+							"            }\r",
+							"       }\r",
+							"       \r",
+							"    });\r",
+							"}\r",
+							"\r",
+							"\r",
+							"/*function checkPartnerInResponse(currentItem) {\r",
+							"    console.log(currentItem);\r",
+							"  \r",
+							"  return currentItem.successData.premiumResponse.insurer.includes(testPartner);\r",
+							"}*/\r",
+							"\r",
+							"function testPartnerResponse(){\r",
+							"   var testObject = newPartnerResponse;\r",
+							"    if(testObject!=null && testObject.successData!=null ){\r",
+							"        assertPartnerResponseAvailable(true);\r",
+							"        testPremiumObject = testObject.successData.premiumResponse;\r",
+							"        _.setInsurerId(testPremiumObject.insurerId);\r",
+							"        _.setQuotePremium(testPremiumObject.calculatedPremium.grossPremium);\r",
+							"        verifyIdv();\r",
+							"        verifyBasicAddons();\r",
+							"        verfiySupportedAddons();\r",
+							"        verifySupportedDiscounts();\r",
+							"    }else{\r",
+							"        pm.environment.unset(\"quoteId\");\r",
+							"        assertPartnerResponseAvailable(false);\r",
+							"    }\r",
+							"}\r",
+							"\r",
+							"/*function checkIfPartnerResponseAvailable(){\r",
+							"    \r",
+							"     for(i=0;i<response.listPremiumInfo.length;i++)\r",
+							"    {\r",
+							"        var testObject = response.listPremiumInfo[i];\r",
+							"         if(testObject.statusCode===\"success\"){\r",
+							"            var testPremiumObject = testObject.successData.premiumResponse\r",
+							"            var insurerName=testPremiumObject.insurer;\r",
+							"            var responseCoverageType = testPremiumObject.coverage.typeChoices;\r",
+							"            if(insurerName.toUpperCase().includes(testPartner.toUpperCase()) && responseCoverageType.toUpperCase().includes(coverageType.toUpperCase())){\r",
+							"                return testObject;\r",
+							"            }\r",
+							"        }\r",
+							"    }\r",
+							"    return null;\r",
+							"}*/\r",
+							"\r",
+							"function assertPartnerResponseAvailable(isPartnerResponseAvailable){\r",
+							"    pm.test('Successful Response from Partner', () => {\r",
+							"                pm.expect(true).to.eql(isPartnerResponseAvailable);\r",
+							"                })\r",
+							"}\r",
+							"\r",
+							"function verifyBasicAddons(){\r",
+							"    var premiumBreakup = testPremiumObject.premiumBreakup\r",
+							"    var basicAddons = _.getInputSupportedBasicAddons().split('|');\r",
+							"     pm.test('Test Basic Addons', () => {\r",
+							"         _verifyBasicAddonDiscounts(premiumBreakup.basicPremiums,basicAddons);\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"function verfiySupportedAddons(){\r",
+							"var premiumBreakup = testPremiumObject.premiumBreakup\r",
+							"var tempAddons = _.getInputSupportedAddons();\r",
+							"var supportedAddons;\r",
+							"var addonPremiumObject;\r",
+							"(tempAddons=='')?supportedAddons=[]:supportedAddons = tempAddons.split('|');\r",
+							"(!isBundledPartner)?addonPremiumObject = premiumBreakup.addonPremiums:addonPremiumObject = premiumBreakup.bundledAddons;\r",
+							"    pm.test('Test Supported Addons', () => {\r",
+							"         _verifyAddon(addonPremiumObject,supportedAddons);\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"function verifySupportedDiscounts(){\r",
+							"    var premiumBreakup = testPremiumObject.premiumBreakup\r",
+							"    var supportedDiscounts;\r",
+							"    var tempDiscounts = _.getInputSupportedDiscounts();\r",
+							"    (tempDiscounts=='')?supportedDiscounts=[]:supportedDiscounts = tempDiscounts.split('|');\r",
+							"    pm.test('Test Supported Discounts', () => {\r",
+							"        _verifyBasicAddonDiscounts(premiumBreakup.discounts,supportedDiscounts);\r",
+							"})\r",
+							"}\r",
+							"function _verifyAddon(addonDiscountResponse,supportedAddonDiscounts){\r",
+							"     pm.expect(supportedAddonDiscounts.length).to.eql(_.getNumberOfAddons(isBundledPartner,addonDiscountResponse));\r",
+							"    _.each(supportedAddonDiscounts, (item) => {\r",
+							"        pm.expect(_.arrayContains(addonDiscountResponse, \"type\" ,item)).to.be.true;\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"function _verifyBasicAddonDiscounts(addonDiscountResponse,supportedAddonDiscounts){\r",
+							"     pm.expect(supportedAddonDiscounts.length).to.eql(addonDiscountResponse.length);\r",
+							"    _.each(supportedAddonDiscounts, (item) => {\r",
+							"        pm.expect(_.arrayContains(addonDiscountResponse, \"type\" ,item)).to.be.true;\r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"function verifyIdv(){\r",
+							"    var calcutaedIdv = testPremiumObject.calculatedAtIDV;\r",
+							"    var minIdv = testPremiumObject.minIDV;\r",
+							"    var maxIdv = testPremiumObject.maxIDV;\r",
+							"    pm.test('Test IDV Logic', () => {\r",
+							"     coverageType.includes('third_party')?pm.expect(calcutaedIdv).to.be.equal(0.0)\r",
+							"                :pm.expect(_.idvLogic(inputIDV, minIdv ,maxIdv,calcutaedIdv)).to.be.true   \r",
+							"    })\r",
+							"}\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "a5b6ba49-1e55-4d77-9c18-146b22490a15",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-GB,en;q=0.5",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CUSTOMER-ID",
+						"value": "1001287547",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CLIENT",
+						"value": "web",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-APP-VERSION",
+						"value": "null",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "https://staging.paytminsurance.co.in",
+						"type": "text"
+					},
+					{
+						"key": "DNT",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://staging.paytminsurance.co.in/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/{{quoteUrl}}/fetchPremiums?quoteId={{quoteId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{quoteUrl}}",
+						"fetchPremiums"
+					],
+					"query": [
+						{
+							"key": "quoteId",
+							"value": "{{quoteId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateProposal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "446a51e0-f7fe-46da-881e-2ab1fbd5e3b9",
+						"exec": [
+							"pm.test(\"Create Proposal Status test\", function () {",
+							"    var result = pm.response;",
+							"    result.to.have.status(200);",
+							"    pm.expect(result).to.not.equal(null)",
+							"});",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"proposalId\", jsonData.proposalId);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6b8be403-a731-4fb9-a187-dfd7db2070c7",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true,
+					"user-agent": true,
+					"connection": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-GB,en;q=0.5",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CUSTOMER-ID",
+						"value": "1001287547",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CLIENT",
+						"value": "web",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-APP-VERSION",
+						"value": "null",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "https://staging.paytminsurance.co.in",
+						"type": "text"
+					},
+					{
+						"key": "DNT",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://staging.paytminsurance.co.in/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"quoteId\": \"{{quoteId}}\",\n    \"quoteParamsDTO\": {{quoteDto}},\n    \"insurerId\": {{insurerId}},\n    \"coverageType\":\"{{coverageType}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/{{proposalUrl}}/proposal",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{proposalUrl}}",
+						"proposal"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProposalData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e3207201-d7da-407b-8146-152b646afb53",
+						"exec": [
+							"var result = pm.response.json();",
+							"var previousCoverageType = pm.iterationData.get('previousCoverageType');",
+							"var regNo = pm.iterationData.get('testRegNo');",
+							"var pastPolicyTPEndDate=result.tpPastPolicyExpiryDate;",
+							"var pastPolicyODEndDate=result.odPastPolicyExpiryDate;",
+							"var pastPolicyTPStartDate=result.tpPastPolicyStartDate;",
+							"var pastPolicyODStartDate=result.odPastPolicyStartDate;",
+							"var prefillRegNo = result.registrationNumber;",
+							"var prefillEngNo = result.engineNumber;",
+							"var prefillChasisNo = result.chassisNumber;",
+							"_.setInitialConfigValue(pm);",
+							"",
+							"pm.test(\"GetProposalData Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"    pm.expect(pm.response).to.not.equal(null)",
+							"});",
+							"",
+							"",
+							"pm.test(\"Previous Policy Start and End Dates Prefilling\", function () {",
+							"    _.setOdStartDate(pastPolicyODStartDate);",
+							"    _.setTpStartDate(pastPolicyTPStartDate);",
+							"    pm.expect(_validatePastPolicyDates()).to.be.true;",
+							"});",
+							"",
+							"",
+							"pm.test(\"Aadrila Prefilling\",function(){",
+							"    pm.expect(_validateAadrilaPrefillingRegNo()).to.be.true;",
+							"    pm.expect(_validateAadrilaPrefillingEngineChasisNo(),\"Validate Engine and Chasis Number\").to.be.true;",
+							"",
+							"});",
+							"",
+							"",
+							"function _validatePastPolicyDates(){",
+							"    var result=false;",
+							"    if(_.isComprehensive(previousCoverageType)){",
+							"       result = _validateComprehensivePastPolicyDates();",
+							"    }else if (_.isPreviousThirdParty()){",
+							"      result=  _validateThirdPartyPastPolicyDates(); ",
+							"    }else if(_.isPreviousHybrid()){",
+							"      result =  _validateBundlePastPolicyDates();  ",
+							"    }",
+							"    _.setPreviousPolicyDetails(previousCoverageType);",
+							"    return result;",
+							"}",
+							"",
+							"function _validateComprehensivePastPolicyDates(){",
+							"var inputDate =  _.getEnvironmentVariable('odExpiryDate');",
+							"var pastPolicyStartDate = _.getPastPolicyStartDate(inputDate,1);",
+							"return (pastPolicyODEndDate==pastPolicyTPEndDate && pastPolicyTPEndDate==inputDate  && pastPolicyStartDate==pastPolicyTPStartDate && pastPolicyStartDate==pastPolicyODStartDate)",
+							"}",
+							"",
+							"function _validateThirdPartyPastPolicyDates(){",
+							"var inputDate = _.getEnvironmentVariable('tpExpiryDate')",
+							"var tpTenure = _.getEnvironmentVariable('tpTenure');",
+							"var pastPolicyStartDate = _.getPastPolicyStartDate(inputDate,tpTenure);",
+							"return (pastPolicyTPEndDate==inputDate  && pastPolicyStartDate==pastPolicyTPStartDate)",
+							"}",
+							"",
+							"function _validateBundlePastPolicyDates(){",
+							"var odExpiryDate = _.getEnvironmentVariable('odExpiryDate')",
+							"var tpExpiryDate = _.getEnvironmentVariable('tpExpiryDate')",
+							"var tpTenure = _.getTpTenure();",
+							"var calcPastPolicyTPStartDate = _.getPastPolicyStartDate(tpExpiryDate,tpTenure);",
+							"var calcPastPolicyODStartDate = _.getPastPolicyStartDate(odExpiryDate,1);",
+							"return (pastPolicyTPEndDate==tpExpiryDate && pastPolicyODEndDate==odExpiryDate && calcPastPolicyTPStartDate==pastPolicyTPStartDate && calcPastPolicyODStartDate==pastPolicyODStartDate)",
+							"}",
+							"",
+							"",
+							"function _validateAadrilaPrefillingRegNo(){",
+							"    var tempResult=false;",
+							"    if(regNo==\"null\"){",
+							"        if(prefillRegNo.length==4 || prefillRegNo.length==10 || prefillRegNo.length==11){",
+							"            tempResult = true;",
+							"            prefillRegNo=prefillRegNo.substring(0,4)+'XX'+_.getFourDigitRandomNumber();    ",
+							"        }",
+							"    }else{",
+							"        tempResult= (prefillRegNo.length==10 || prefillRegNo.length==11);",
+							"    }",
+							"    _.setRegistrationNumber(prefillRegNo);",
+							"    return tempResult;",
+							"}",
+							"",
+							"function _validateAadrilaPrefillingEngineChasisNo(){",
+							"    var tempResult =false;",
+							"    if(regNo==\"null\"){",
+							"        if((prefillEngNo==null && prefillChasisNo==null) || (prefillEngNo.length>0 && prefillChasisNo.length>0)){",
+							"            tempResult = true;",
+							"            prefillEngNo = prefillRegNo + _.getFourDigitRandomNumber();",
+							"            prefillChasisNo = prefillRegNo + _.getFourDigitRandomNumber();",
+							"        }",
+							"    }else{",
+							"        tempResult= (prefillEngNo.length>0 && prefillChasisNo.length>0);",
+							"    }",
+							"    _.setEngineNumber(prefillEngNo);",
+							"    _.setChasisNumber(prefillChasisNo);",
+							"    return tempResult;",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-GB,en;q=0.5",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CUSTOMER-ID",
+						"value": "1001287547",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CLIENT",
+						"value": "web",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-APP-VERSION",
+						"value": "null",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "https://staging.paytminsurance.co.in",
+						"type": "text"
+					},
+					{
+						"key": "DNT",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://staging.paytminsurance.co.in/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/{{proposalUrl}}/proposal/:proposalId/data",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{proposalUrl}}",
+						"proposal",
+						":proposalId",
+						"data"
+					],
+					"variable": [
+						{
+							"key": "proposalId",
+							"value": "{{proposalId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateProposal",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "4b462907-b2a6-4909-90aa-ab39c51ded83",
+						"exec": [
+							"var loanType = null;",
+							"var loanValue=null;",
+							"_.setInitialConfigValue(pm);",
+							"var x = pm.variables.get(\"proposalPaylaod\")",
+							"if(_.isVehicleOnLoan()){",
+							"    _.setVehicleOnLoan(true);",
+							"    loanType = _.getLoanType();",
+							"    loanValue= _.getLoanValue();",
+							"}else{",
+							"    _.setVehicleOnLoan(false);",
+							"}",
+							"_.setGender(_.getGender());",
+							"_.setMaritalStatus(_.getMaritalStatus());",
+							"_.setRelationship(_.getRelationship());",
+							"_.setPincode(_.getPincode());",
+							"_.setCity(_.getCity());",
+							"_.setState(_.getState());",
+							"_.setLoanType(loanType);",
+							"_.setLoanValue(loanValue);",
+							"if(loanType==null){",
+							"   x= x.replace(\"\\\"{{loanType}}\\\"\",null);",
+							"}",
+							"_.setUpdateProposal(x); "
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "62c94a90-59ae-4f2f-a9a6-4f306f4c1523",
+						"exec": [
+							"pm.test(\"Update Proposal Status test\", function () {",
+							"    var result = pm.response;",
+							"    result.to.have.status(200);",
+							"    pm.expect(result).to.not.equal(null)",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-GB,en;q=0.5",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CUSTOMER-ID",
+						"value": "1001287547",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CLIENT",
+						"value": "web",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-APP-VERSION",
+						"value": "null",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "https://staging.paytminsurance.co.in",
+						"type": "text"
+					},
+					{
+						"key": "DNT",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://staging.paytminsurance.co.in/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{updatePayload}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/{{proposalUrl}}/proposal/:proposalId",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{proposalUrl}}",
+						"proposal",
+						":proposalId"
+					],
+					"variable": [
+						{
+							"key": "proposalId",
+							"value": "{{proposalId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ConfirmProposal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f68f756c-22a7-40d2-8399-514ade705f8f",
+						"exec": [
+							"pm.test(\"Confirm Proposal Status test\", function () {",
+							"    var result = pm.response;",
+							"    result.to.have.status(200);",
+							"    pm.expect(result).to.not.equal(null)",
+							"});",
+							"",
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"attemptId\", jsonData.insurerProposalAttemptId);",
+							"",
+							"var proposalPremium = parseFloat(jsonData.quoteGrossPremium);",
+							"var partnerFinalPremium = parseFloat(jsonData.finalPremium);",
+							"var quotePremium = parseFloat(pm.environment.get(\"quotePremium\"));",
+							"pm.test(\"Premium Difference Proposal and Partner\", function () {",
+							"   pm.expect(Math.abs(partnerFinalPremium-proposalPremium)).to.be.below(2.5);",
+							"});",
+							"",
+							"pm.test(\"Premium Difference Quote and Partner\", function () {",
+							"   pm.expect(Math.abs(partnerFinalPremium-quotePremium)).to.be.below(2.5);",
+							"});",
+							"",
+							"pm.environment.unset(\"proposalId\");",
+							"pm.environment.unset(\"quotePremium\");",
+							"pm.environment.unset(\"quoteId\");",
+							"pm.variables.unset(\"updatePayload\");",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "User-Agent",
+						"value": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:87.0) Gecko/20100101 Firefox/87.0",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "en-GB,en;q=0.5",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-With",
+						"value": "XMLHttpRequest",
+						"type": "text"
+					},
+					{
+						"key": "Cache-Control",
+						"value": "no-cache",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-SSO-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-WALLET-TOKEN-ENCRYPTED",
+						"value": "07d6b6970acdacfc6d7acb4502a600387551f45d662d516d3b7a7ce0b1114f715073718e2f81f1daafe994dbfd4289b2",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CUSTOMER-ID",
+						"value": "1001287547",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-CLIENT",
+						"value": "web",
+						"type": "text"
+					},
+					{
+						"key": "X-PIBPL-USER-APP-VERSION",
+						"value": "null",
+						"type": "text"
+					},
+					{
+						"key": "Origin",
+						"value": "https://staging.paytminsurance.co.in",
+						"type": "text"
+					},
+					{
+						"key": "DNT",
+						"value": "1",
+						"type": "text"
+					},
+					{
+						"key": "Connection",
+						"value": "keep-alive",
+						"type": "text"
+					},
+					{
+						"key": "Referer",
+						"value": "https://staging.paytminsurance.co.in/",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{{updatePayload}}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/{{proposalUrl}}/proposal//:proposalId/confirm",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"{{proposalUrl}}",
+						"proposal",
+						"",
+						":proposalId",
+						"confirm"
+					],
+					"variable": [
+						{
+							"key": "proposalId",
+							"value": "{{proposalId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6ae8f830-bbc2-4625-86eb-72e685dde00d",
+				"type": "text/javascript",
+				"exec": [
+					"const CoverageType = {",
+					"   COMPREHENSIVE: 'comprehensive_1y_1y',",
+					"   OWNDAMAGE: 'own_damage_1y',",
+					"   THIRDPARTY: 'third_party_1y',",
+					"   THIRDPARTY5Y: 'third_party_5y',",
+					"   THIRDPARTY3Y:'third_party_3y',",
+					"   BUNDLE_1Y_3Y:'hybrid_1y_3y',",
+					"   HYBRID_1Y_3Y:'hybrid_3y_od_1y',",
+					"   BUNDLE_1Y_5Y:'hybrid_1y_5y',",
+					"   HYBRID_1Y_5Y:'hybrid_5y_od_1y'",
+					"};",
+					"",
+					"const moment = require('moment');",
+					"const MIN = 1;",
+					"const MAX_INSURER_PINCODE = 10;",
+					"const MAX_LOANTYPE_GENDER = 3;",
+					"const MIN_POLICY_NUMBER = 10000000;",
+					"const MAX_POLICY_NUMBER = 100000000;",
+					"var inputPreviousCoverage;",
+					"var tpTenure;",
+					"var inputRegDate;",
+					"var expiredDate;",
+					"var coverageType;",
+					"var zipcode;",
+					"var postmanObject;",
+					"var newPolicyStartDate;",
+					"var newPolicyType;",
+					"",
+					" const Insurer={",
+					"    1:1,",
+					"    2:36,",
+					"    3:12,",
+					"    4:15,",
+					"    5:17,",
+					"    6:28,",
+					"    7:11,",
+					"    8:25,",
+					"    9:20,",
+					"   10:27",
+					"}",
+					"",
+					"const LoanType = {",
+					"   1: 'loan',",
+					"   2:'hire_purchase',",
+					"   3:'lease'",
+					"};",
+					"",
+					"const Gender = {",
+					"   1: 'male',",
+					"   2:'female',",
+					"   3:'others'",
+					"};",
+					"",
+					"const MaritalStatus = {",
+					"   1: 'married',",
+					"   2:'single',",
+					"   3:'others',",
+					"   4:'others'",
+					"",
+					"}",
+					"",
+					"const Relationship = {",
+					"   1: 'father',",
+					"   2:'mother',",
+					"   3:'wife',",
+					"   4:'son',",
+					"   5:'daughter',",
+					"   6:'husband',",
+					"   7:'brother',",
+					"   8:'sister',",
+					"   9:'other'",
+					"}",
+					"",
+					"const Pincode={",
+					"    1:400092,",
+					"    2:500055,",
+					"    3:249204,",
+					"    4:110058,",
+					"    5:560034,",
+					"    6:380001,",
+					"    7:190001,",
+					"    8:700020,",
+					"    9:273164,",
+					"    10:307001",
+					"}",
+					"",
+					"const City={",
+					"    400092:'Mumbai',",
+					"    500055:'Hyderabad',",
+					"    249204:'Dehradun',",
+					"    110058:'New Delhi',",
+					"    560034:'Bangalore',",
+					"    380001:'Ahmedabad',",
+					"    190001:'Srinagar',",
+					"    700020:'Kolkata',",
+					"    273164:'Maharajganj',",
+					"    307001:'Sirohi'",
+					"}",
+					"",
+					"const State={",
+					"    400092:'Maharashtra',",
+					"    500055:'Telangana',",
+					"    249204:'Uttarakhand',",
+					"    110058:'Delhi',",
+					"    560034:'Karnataka',",
+					"    380001:'Gujarat',",
+					"    190001:'Jammu And Kashmir',",
+					"    700020:'West Bengal',",
+					"    273164:'Uttar Pradesh',",
+					"    307001:'Rajasthan'",
+					"}",
+					"",
+					"",
+					"Object.prototype.isComprehensive = function(inputVal){",
+					"    return inputVal==CoverageType.COMPREHENSIVE.toLowerCase();",
+					"};",
+					"",
+					"Object.prototype.isOwnDamage = function(inputVal){",
+					"    return inputVal==CoverageType.OWNDAMAGE.toLowerCase();",
+					"};",
+					"",
+					"Object.prototype.isPreviousHybrid = function(){",
+					"    return inputPreviousCoverage==CoverageType.BUNDLE_1Y_3Y || inputPreviousCoverage==CoverageType.BUNDLE_1Y_5Y || inputPreviousCoverage==CoverageType.HYBRID_1Y_3Y || inputPreviousCoverage==CoverageType.HYBRID_1Y_5Y;",
+					"};",
+					"",
+					"Object.prototype.isPreviousThirdParty = function(){",
+					"    return inputPreviousCoverage==CoverageType.THIRDPARTY || inputPreviousCoverage==CoverageType.THIRDPARTY5Y || ",
+					"        inputPreviousCoverage==CoverageType.THIRDPARTY3Y;",
+					"};",
+					"",
+					"Object.prototype.isPolicyTypeSeperate = function(inputVal){",
+					"    return inputVal==CoverageType.HYBRID_1Y_3Y.toLowerCase() || inputVal==CoverageType.HYBRID_1Y_5Y.toLowerCase();",
+					"};",
+					"",
+					"function _isExpired(inputDate){",
+					"    return moment().diff(moment(inputDate,'YYYY-MM-DD').format('YYYY-MM-DD'))>0;",
+					"}",
+					"",
+					"Object.prototype.isBreakIn = function(tpExpiryDate,odExpiryDate){",
+					"    if((_.isPreviousThirdParty() && newPolicyType=='od') || _isExpired(tpExpiryDate) || _isExpired(odExpiryDate)){",
+					"        return true;",
+					"    }",
+					"    return false;",
+					"}",
+					"",
+					"Object.prototype.getIterationData = function(value){",
+					"    return postmanObject.iterationData.get(value).toLowerCase();",
+					"}",
+					"",
+					"",
+					"Object.prototype.getInputPreviousCoverageType = function(){",
+					"    return _.getIterationData('previousCoverageType');",
+					"}",
+					"",
+					"Object.prototype.getInputRegDate = function(){",
+					"    return _.getIterationData('regDate');",
+					"}",
+					"",
+					"Object.prototype.getExpiredDate = function(){",
+					"   return  _.getIterationData('expiryDate');",
+					"}",
+					"",
+					"Object.prototype.getCoverageType =function(){",
+					"    return  _.getIterationData('coverageType');",
+					"}",
+					"",
+					"Object.prototype.getIsBundledPartner =function(){",
+					"    return  _.getIterationData('isBundledPartner');",
+					"}",
+					"",
+					"Object.prototype.getInputIdv =function(){",
+					"    return  _.getIterationData('TestIDV');",
+					"}",
+					"",
+					"Object.prototype.getInputSupportedAddons=function(){",
+					"    return  _.getIterationData('supportedAddons');",
+					"}",
+					"",
+					"Object.prototype.getInputSupportedBasicAddons=function(){",
+					"    return  _.getIterationData('basicAddons');",
+					"}",
+					"",
+					"Object.prototype.getInputSupportedDiscounts=function(){",
+					"    return  _.getIterationData('supportedDiscounts');",
+					"}",
+					"",
+					"",
+					"Object.prototype.getPartnerName =function(){",
+					"    return  _.getIterationData('testPartnerName');",
+					"}",
+					"",
+					"Object.prototype.getRetryCount =function(){",
+					"    return  _.getEnvironmentVariable('tries');",
+					"}",
+					"",
+					"Object.prototype.getTpTenure = function(){",
+					"    var tenure = inputPreviousCoverage.match(/(\\d+)/g);",
+					"    if(tenure[1]!=null){",
+					"        return Math.max(tenure[0],tenure[1]);",
+					"    }",
+					"    return tenure[0];",
+					"    ",
+					"}",
+					"",
+					"Object.prototype.isVehicleOnLoan = function(){",
+					"    return (_.getRandomNumberMinMax(0,1)==1);",
+					"}",
+					"",
+					"Object.prototype.getLoanType = function(){",
+					"    var loanType = _.getRandomNumberMinMax(MIN,MAX_LOANTYPE_GENDER);",
+					"    return LoanType[loanType];",
+					"}",
+					"",
+					"Object.prototype.getLoanValue = function(){",
+					"    return _.getRandomNumberMinMax(MIN,5000);",
+					"}",
+					"",
+					"Object.prototype.getGender = function(){",
+					"    var gender = _.getRandomNumberMinMax(MIN,MAX_LOANTYPE_GENDER);",
+					"    return Gender[gender];",
+					"}",
+					"",
+					"Object.prototype.getMaritalStatus = function(){",
+					"    var maritalStatus = _.getRandomNumberMinMax(MIN,MAX_LOANTYPE_GENDER+1);",
+					"    return MaritalStatus[maritalStatus];",
+					"}",
+					"",
+					"Object.prototype.getRelationship = function(){",
+					"    var relation = _.getRandomNumberMinMax(MIN,MAX_INSURER_PINCODE-1);",
+					"    return Relationship[relation];",
+					"}",
+					"",
+					"Object.prototype.getPincode = function(){",
+					"    zipcode = Pincode[_.getRandomNumberMinMax(MIN,MAX_INSURER_PINCODE)];",
+					"    return zipcode;",
+					"}",
+					"",
+					"Object.prototype.getCity = function(){",
+					"    return City[zipcode];",
+					"}",
+					"",
+					"Object.prototype.getState = function(){",
+					"    return State[zipcode]",
+					"}",
+					"",
+					"Object.prototype.getEnvironmentVariable = function(value){",
+					"   return postmanObject.environment.get(value);",
+					"}",
+					"",
+					"Object.prototype.getRandomNumberMinMax= function(minNumber,maxNumber){",
+					"    return Math.floor(Math.random() * (maxNumber - minNumber + 1) + minNumber);",
+					"}",
+					"",
+					"Object.prototype.getFourDigitRandomNumber= function(){",
+					"    return _.getRandomNumberMinMax(1000,9999);",
+					"}",
+					"",
+					"Object.prototype.getCalcDate= function(inputDate,years,months,days){",
+					"    return moment(inputDate, 'YYYY-MM-DD').add(years,'year').add(months,'month').add(days,'day').format(\"YYYY-MM-DD\");",
+					"}",
+					"",
+					"Object.prototype.getToday= function(){",
+					"    return moment().format('YYYY-MM-DD');",
+					"}",
+					"",
+					"Object.prototype.getPastPolicyStartDate= function(inputDate,tenure){",
+					"    //return moment(inputDate, 'YYYY-MM-DD').subtract(tenure,'year').add(1,'day').format(\"YYYY-MM-DD\");",
+					"    return _.getCalcDate(inputDate,-tenure,0,1);",
+					"}",
+					"",
+					"Object.prototype.getOffsetYears =function(inputDate){",
+					"var years=0;",
+					"var resultMatch = inputDate.match(/-?(\\d+['y'])/g);",
+					"if( resultMatch !=null){",
+					"    years = resultMatch[0].replace('y','');",
+					"}",
+					"return parseInt(years);",
+					"}",
+					"",
+					"Object.prototype.getOffsetMonths =function(inputDate){",
+					"var months=0;",
+					"var resultMatch = inputDate.match(/-?(\\d+['m'])/g);",
+					"if( resultMatch !=null){",
+					"    months = resultMatch[0].replace('m','');",
+					"}",
+					"return parseInt(months);",
+					"}",
+					"",
+					"Object.prototype.getOffsetDays =function(inputDate){",
+					"var days=0;",
+					"var resultMatch = inputDate.match(/-?(\\d+['d'])/g);",
+					"if( resultMatch !=null){",
+					"    days = resultMatch[0].replace('d','');",
+					"}",
+					"return parseInt(days);",
+					"}",
+					"",
+					"Object.prototype.getRegDate= function(inputDate){",
+					"    ",
+					"    var years = _.getOffsetYears(inputDate);",
+					"    var months = _.getOffsetMonths(inputDate);",
+					"    var days = _.getOffsetDays(inputDate);",
+					"    ",
+					"    var calcRegDate = _.getEnvironmentVariable('tpExpiryDate');",
+					"    if(years!=0 || months!=0){",
+					"        days=days+1;",
+					"    }",
+					"    if(_.isPreviousHybrid()){",
+					"        calcRegDate = _.getEnvironmentVariable('odExpiryDate')",
+					"    }",
+					"    return _.getCalcDate(newPolicyStartDate,years,months,days);",
+					"}",
+					"",
+					"Object.prototype.getPreviousInsurerValue = function(){",
+					"    var tempNumber = _.getRandomNumberMinMax(1,10);",
+					"    var insurerId = _.getEnvironmentVariable('insurerId');",
+					"    var tempInsurerId = Insurer[tempNumber];",
+					"    if(tempInsurerId==insurerId){",
+					"       tempNumber==10?tempInsurerId=Insurer[tempNumber-1]:tempInsurerId=Insurer[tempNumber+1];",
+					"    }",
+					"    return tempInsurerId;",
+					"}",
+					"",
+					"Object.prototype.getPolicyNumber = function(){",
+					"    return _.getRandomNumberMinMax(MIN_POLICY_NUMBER,MAX_POLICY_NUMBER);",
+					"}",
+					"",
+					"Object.prototype.setEnvironmentVariable = function(name,value){",
+					"    postmanObject.environment.set(name,value);   ",
+					"}",
+					"",
+					"Object.prototype.setRetryCount =function(value){",
+					"    return  _.setEnvironmentVariable('tries',value);",
+					"}",
+					"",
+					"Object.prototype.setOdExpiryDate=function(expiryDate){",
+					"    _.setEnvironmentVariable('odExpiryDate',expiryDate);",
+					"}",
+					"",
+					"Object.prototype.setTpExpiryDate=function(expiryDate){",
+					"    _.setEnvironmentVariable('tpExpiryDate',expiryDate);",
+					"}",
+					"",
+					"Object.prototype.setGender = function(value){",
+					"    _.setEnvironmentVariable('gender',value);    ",
+					"}",
+					"",
+					"Object.prototype.setMaritalStatus = function(value){",
+					"    _.setEnvironmentVariable('maritalStatus',value);    ",
+					"}",
+					"",
+					"Object.prototype.setRelationship = function(value){",
+					"    _.setEnvironmentVariable('nomineeRelation',value);    ",
+					"}",
+					"",
+					"Object.prototype.setPincode = function(value){",
+					"    _.setEnvironmentVariable('pincode',value);    ",
+					"}",
+					"",
+					"Object.prototype.setCity = function(value){",
+					"    _.setEnvironmentVariable('city',value);    ",
+					"}",
+					"",
+					"Object.prototype.setState = function(value){",
+					"    _.setEnvironmentVariable('state',value);    ",
+					"}",
+					"",
+					"Object.prototype.setVehicleOnLoan = function(value){",
+					"    _.setEnvironmentVariable('isVehicleLoan',value);    ",
+					"}",
+					"",
+					"Object.prototype.setLoanType = function(value){",
+					"    _.setEnvironmentVariable('loanType',value);    ",
+					"}",
+					"",
+					"Object.prototype.setLoanValue = function(value){",
+					"    _.setEnvironmentVariable('loanId',value);    ",
+					"}",
+					"",
+					"Object.prototype.setRegistrationNumber = function(value){",
+					"    _.setEnvironmentVariable('registrationNumber',value);    ",
+					"}",
+					"",
+					"Object.prototype.setEngineNumber = function(value){",
+					"    _.setEnvironmentVariable('engineNumber',value);    ",
+					"}",
+					"",
+					"Object.prototype.setChasisNumber = function(value){",
+					"    _.setEnvironmentVariable('chasisNumber',value);    ",
+					"}",
+					"",
+					"Object.prototype.setOdStartDate = function(value){",
+					"    _.setEnvironmentVariable('pastOdStartDate',value);    ",
+					"}",
+					"",
+					"Object.prototype.setTpStartDate = function(value){",
+					"    _.setEnvironmentVariable('pastTpStartDate',value);    ",
+					"}",
+					"",
+					"Object.prototype.setTpPolicyNumber = function(value){",
+					"    _.setEnvironmentVariable('tpPreviousPolicyNumber',value);    ",
+					"}",
+					"",
+					"Object.prototype.setOdPolicyNumber = function(value){",
+					"    _.setEnvironmentVariable('odPreviousPolicyNumber',value);    ",
+					"}",
+					"",
+					"Object.prototype.setTpPreviousInsurer = function(value){",
+					"    _.setEnvironmentVariable('tpPreviousInsurer',value);    ",
+					"}",
+					"",
+					"Object.prototype.setInsurerId = function(value){",
+					"    _.setEnvironmentVariable('insurerId',value);    ",
+					"}",
+					"",
+					"Object.prototype.setQuotePremium = function(value){",
+					"    _.setEnvironmentVariable('quotePremium',value);    ",
+					"}",
+					"",
+					"Object.prototype.setOdPreviousInsurer = function(value){",
+					"    _.setEnvironmentVariable('odPreviousInsurer',value);    ",
+					"}",
+					"",
+					"Object.prototype.setUpdateProposal = function(value){",
+					"    _.setEnvironmentVariable('updatePayload',value);    ",
+					"}",
+					"",
+					"Object.prototype.setCoverageGroup = function(postmanObject){",
+					"    var coverageGroup;",
+					"    if(_.isComprehensive(coverageType)){",
+					"        coverageGroup='comprehensive';",
+					"    }else if(_.isOwnDamage(coverageType)){",
+					"        coverageGroup='od';",
+					"    }else{",
+					"        coverageGroup='tp';",
+					"    }",
+					"    _.setEnvironmentVariable('coverageGroup',coverageGroup);",
+					"    newPolicyType=coverageGroup;",
+					"}",
+					"",
+					"Object.prototype.setComprehensiveExpiryDate=function(expiryDate){",
+					"    _.setOdExpiryDate(expiryDate);",
+					"    _.setTpExpiryDate(expiryDate);",
+					"    _.setNewPolicyStartDate(expiryDate,expiryDate);",
+					"}",
+					"",
+					"Object.prototype.setHybridExpiryDate=function(expiryDate){",
+					"    var calcTpDate= _.getCalcDate(expiryDate,tpTenure-1,0,0);",
+					"    _.setOdExpiryDate(expiryDate);",
+					"    _.setTpExpiryDate(calcTpDate);",
+					"    _.setNewPolicyStartDate(calcTpDate,expiryDate);",
+					"}",
+					"",
+					"Object.prototype.setThirdPartyExpiryDate=function(expiryDate){",
+					"    var odExpiryDate = _.getCalcDate(_.getToday(),0,0,15);",
+					"    _.setOdExpiryDate(odExpiryDate);",
+					"    _.setTpExpiryDate(expiryDate);",
+					"    _.setNewPolicyStartDate(expiryDate,odExpiryDate);",
+					"    ",
+					"}",
+					"",
+					"",
+					"Object.prototype.setExpiryDate = function(){",
+					"    var years = _.getOffsetYears(expiredDate);",
+					"    var months = _.getOffsetMonths(expiredDate);",
+					"    var days = _.getOffsetDays(expiredDate)+1;",
+					"    var expiryDate = _.getCalcDate(_.getToday(),years,months,days);",
+					"    if(_.isComprehensive(inputPreviousCoverage)){",
+					"            _.setComprehensiveExpiryDate(expiryDate);",
+					"    }else if(_.isPreviousHybrid()){",
+					"        _.setHybridExpiryDate(expiryDate);",
+					"    }else{",
+					"        _.setThirdPartyExpiryDate(expiryDate);",
+					"    }",
+					"}",
+					"",
+					"Object.prototype.setNewPolicyStartDate = function(tpExpiryDate,odExpiryDate){",
+					"    if(_.isBreakIn(tpExpiryDate,odExpiryDate)){",
+					"        newPolicyStartDate = _.getCalcDate(_.getToday(),0,0,1);",
+					"    }else if(newPolicyType=='od'){",
+					"        newPolicyStartDate = _.getCalcDate(odExpiryDate,0,0,1);",
+					"    }else{",
+					"        newPolicyStartDate = _.getCalcDate(tpExpiryDate,0,0,1);",
+					"    }",
+					"    _.setEnvironmentVariable('newPolicyDate',newPolicyStartDate);",
+					"}",
+					"",
+					"",
+					"",
+					"Object.prototype.setRegistrationDate=function(){",
+					"    var regDate = _.getRegDate(inputRegDate);",
+					"    _.setEnvironmentVariable('modifiedRegDate',regDate);",
+					"    _.setEnvironmentVariable('manufacturingDate',regDate);",
+					"}",
+					"",
+					"",
+					"Object.prototype.setComprehensivePolicyDetails = function(){",
+					"    var tempInsurerValue = _.getPreviousInsurerValue();",
+					"    var policyNumber = _.getPolicyNumber();",
+					"    _.setOdPreviousInsurer(tempInsurerValue);",
+					"    _.setTpPreviousInsurer(tempInsurerValue);",
+					"    _.setOdPolicyNumber(policyNumber);",
+					"    _.setTpPolicyNumber(policyNumber);",
+					"}",
+					"",
+					"Object.prototype.setTPPolicyDetails = function(){",
+					"    var tempInsurerValue = _.getPreviousInsurerValue();",
+					"    var policyNumber = _.getPolicyNumber();",
+					"    _.setOdPreviousInsurer(null);",
+					"    _.setTpPreviousInsurer(tempInsurerValue);",
+					"    _.setOdPolicyNumber(null);",
+					"    _.setTpPolicyNumber(policyNumber);",
+					"}",
+					"",
+					"",
+					"Object.prototype.setHybridPolicyDetails = function(value){",
+					"     var tempInsurerValue = _.getPreviousInsurerValue();",
+					"    var policyNumber = _.getPolicyNumber();",
+					"    _.setOdPreviousInsurer(tempInsurerValue);",
+					"    _.setTpPolicyNumber(policyNumber);",
+					"    if(_.isPolicyTypeSeperate(value)){",
+					"        _.setTpPreviousInsurer(_.getPreviousInsurerValue());",
+					"        _.setOdPolicyNumber(_.getPolicyNumber());",
+					"    }else{",
+					"        _.setTpPreviousInsurer(tempInsurerValue);",
+					"        _.setOdPolicyNumber(policyNumber);",
+					"    }",
+					"}  ",
+					"",
+					"Object.prototype.setPreviousPolicyDetails = function(value){",
+					"    if(_.isComprehensive(value)){",
+					"        _.setComprehensivePolicyDetails();",
+					"    }else if(_.isPreviousThirdParty()){",
+					"        _.setTPPolicyDetails()",
+					"    }else{",
+					"        _.setHybridPolicyDetails(value);",
+					"    }",
+					"}",
+					"",
+					"Object.prototype.setInitialConfigValue = function(value){",
+					"    postmanObject=value;",
+					"    inputPreviousCoverage= _.getInputPreviousCoverageType();",
+					"    coverageType = _.getCoverageType();",
+					"    tpTenure = _.getTpTenure();",
+					"    inputRegDate = _.getInputRegDate();",
+					"    expiredDate = _.getExpiredDate();",
+					"}",
+					"",
+					"",
+					"Object.prototype.arrayContains=function(json, fieldName, searchValue) {",
+					" return Object.keys(json).some(key => {",
+					"        if(json[key]!=null){",
+					"            return typeof json[key] === 'object' ? ",
+					"        _.arrayContains(json[key], fieldName, searchValue) : key === fieldName && json[key].toUpperCase().includes(searchValue.toUpperCase());    ",
+					"        }",
+					"    });",
+					"}",
+					"",
+					"Object.prototype.idvLogic=function(inputIDV,minIDV,maxIDV,calculateIdv){",
+					"    return inputIDV === \"null\" ? (calculateIdv<maxIDV && calculateIdv>=minIDV):",
+					"           inputIDV < minIDV ? calculateIdv===minIDV:",
+					"           inputIDV > maxIDV ? calculateIdv===maxIDV:",
+					"           calculateIdv===inputIDV",
+					"}",
+					"",
+					"Object.prototype.getNumberOfAddons=function (isBundledPartner,addonDiscountResponse){",
+					"    var noOfAddonsDiscounts=0;",
+					"    if(isBundledPartner){",
+					"            for(var i=0;i<addonDiscountResponse.length;i++){",
+					"                noOfAddonsDiscounts+= addonDiscountResponse[i].addOns.length;",
+					"            }",
+					"        return noOfAddonsDiscounts",
+					"    }else{",
+					"        return addonDiscountResponse.length;",
+					"    }",
+					"}",
+					"",
+					"Object.prototype.unsetEnvironmentVariable=function(name){",
+					"    postmanObject.environment.unset(name);",
+					"}",
+					"",
+					"Object.prototype.unsetRetryCount=function(){",
+					"    _.unsetEnvironmentVariable('tries');",
+					"}",
+					"",
+					"Object.prototype.setPostmanObject=function(pm){",
+					"    postmanObject=pm;",
+					"}"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "26fac54d-82e8-4b63-8ac2-c5486d0b1e63",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "fa68fc06-53d1-47b2-846b-26669edffb91",
+			"key": "quoteDto",
+			"value": "{    \"policyType\":\"{{policyType}}\",    \"vehicleType\":\"{{vehicleType}}\",    \"ownership\":\"{{ownershipType}}\",    \"rtoId\":{{TestRtoId}},    \"vehicleId\": {{TestVehicleId}},    \"registrationDate\":\"{{modifiedRegDate}}\",    \"odPastPolicyExpiryDate\":\"{{odExpiryDate}}\",    \"tpPastPolicyExpiryDate\":\"{{tpExpiryDate}}\",    \"newPolicyStartDate\":\"{{newPolicyDate}}\",    \"isPastPolicyDetailsAvl\":true,    \"idv\":{{TestIDV}},    \"idvElectrical\":{{idvElectrical}},    \"idvNonElectrical\":{{idvNonElectrical}},    \"isClaimedLastYear\":{{isClaimedLastYear}},    \"previousNCB\":{{ncb}},    \"isCngFitted\":{{isCngFitted}},    \"cngKitValue\":{{cngKitValue}},    \"registrationNumber\":{{testRegNo}},    \"addonZeroDepreciation\":{{zerpDep}},    \"addonInvoiceCover\":{{InvoiceCover}},    \"addon247RoadsideAssistance\":{{RoadsideAssistance}},    \"addonEngineProtector\":{{EngineProtector}},    \"addonNcbProtection\":{{NcbProtection}},    \"addonKeyReplacement\":{{KeyReplacement}},    \"addonConsumables\":{{Consumables}},    \"addonPaOwnerDriver\":{{PaOwnerDriver}},    \"addonPaidDriver\": {{PaidDriver}},    \"addonTyreSecure\":{{TyreSecure}},    \"addonLossOfPersonalBelongings\":{{LossOfPersonalBelongings}},    \"paPassengerCover\":{{PassengerCover}},    \"paPassengerCount\":null,    \"discountThirdPartyPartial\":{{TPPD}},    \"discountVoluntaryDeductible\":{{Voluntary}},    \"discountAntiTheftDevice\":{{AntiTheft}},    \"discountAutomobileAssociationMembership\":{{AutoMobileMember}},    \"addonEmergencyTransportAndHotelExpenses\":false,\"addonRepairOfGlassFiberPlasticRubberParts\":false,    \"policySubType\":\"fdf\",    \"hasPACovered\": false,    \"isOwnerDriver\":false,    \"manufacturingDate\":\"{{manufacturingDate}}\",    \"previousCoverageType\":\"{{previousCoverageType}}\",\"lastYearZeroDepTaken\":false,\n\"coverageGroup\":\"{{coverageGroup}}\" }"
+		},
+		{
+			"id": "c715d348-1d18-46a4-b4d4-8285808d4288",
+			"key": "proposalPaylaod",
+			"value": "{\n    \"name\": \"Test QA\",\n    \"mobile\": \"9876543210\",\n    \"email\": \"test.qa@test.com\",\n    \"dob\": \"1999-01-01\",\n    \"gender\": \"{{gender}}\",\n    \"maritalStatus\": \"{{maritalStatus}}\",\n    \"nomineeName\": \"Test Nominee\",\n    \"nomineeAge\": 32,\n    \"nomineeRelationship\": \"{{nomineeRelation}}\",\n    \"nomineeMobileNo\": \"9876543211\",\n    \"addressId\": \"1\",\n    \"address1\": \"502, Shree Hari, L T Road\",\n    \"address2\": \"Borivali West\",\n    \"pin\": {{pincode}},\n    \"city\": \"{{city}}\",\n    \"state\": \"{{state}}\",\n    \"registrationNumber\": \"{{registrationNumber}}\",\n    \"engineNumber\": \"{{engineNumber}}\",\n    \"chassisNumber\": \"{{chasisNumber}}\",\n    \"financeType\": \"{{loanType}}\",\n    \"isVehicleOnLoan\": {{isVehicleLoan}},\n    \"odPastPolicyNumber\": \"{{odPreviousPolicyNumber}}\",\n    \"odPastPolicyInsurerId\": {{odPreviousInsurer}},\n    \"tpPastPolicyNumber\": \"{{tpPreviousPolicyNumber}}\",\n    \"tpPastPolicyInsurerId\": {{tpPreviousInsurer}},\n    \"odPastPolicyStartDate\": \"{{pastOdStartDate}}\",\n    \"tpPastPolicyStartDate\": \"{{pastTpStartDate}}\",\n    \"odPastPolicyExpiryDate\": \"{{odExpiryDate}}\",\n    \"tpPastPolicyExpiryDate\": \"{{tpExpiryDate}}\",\n    \"insurerLoanProviderId\": {{loanId}},\n    \"isCommunicationAddressDifferent\": false,\n    \"communicationAddressLineOne\": null,\n    \"communicationAddressLineTwo\": null,\n    \"communicationAddressPincode\": null,\n    \"communicationAddressCity\": null,\n    \"communicationAddressState\": null,\n    \"pan\": null \n}"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
